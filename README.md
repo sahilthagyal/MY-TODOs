@@ -35,7 +35,7 @@ Ensure you have the following installed:
 
 ```bash
 1. Clone the repository:
-   git clone https://github.com/sahilthagyal/todo.git
+   git clone https://github.com/sahilthagyal/MY-TODOs.git
 
 2. Navigate to the project directory:
    cd todo
