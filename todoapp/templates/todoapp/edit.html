@@ -1,0 +1,42 @@
+{%include "todoapp/header.html" %} 
+{% block content %}
+        
+        <section class="vh-100">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col">
+                        <div class="card" id="list1" style="border-radius: .75rem; background-color:rgb(147, 165, 177);">
+                            <div class="card-body py-4 px-4 px-md-5">
+                                <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
+                                    <i class="fas fa-check-square me-1"></i>
+                                    <u>Edit My Todo-s</u>
+                                </p>
+                                {% if key %}
+    <form action="{% url 'updatedata' pk=key.id %}" method="POST">
+        {% csrf_token %}
+        
+        <!-- Title Field -->
+        <label for="Edit-Title" class="form-label">Title</label>
+        <input type="text" class="form-control fw-bold" name="Title" value="{{ key.Title }}" id="Title" required>
+
+        <!-- Date Field -->
+        <label for="Edit-date" class="form-label">Date</label>
+        <input type="date" class="form-control fw-bold" name="date" value="{{ key.date|date:'Y-m-d' }}" id="date" required>
+
+        <!-- Status Dropdown with Current Value Selected -->
+        <div class="mb-3">
+            <p class="form-label">Status</p>
+            <select class="form-select" name="status">
+               <!-- selected is used to show the already selected option in the website-->
+                <option value="Completed" {% if key.status == "Completed" %}selected{% endif %}>Completed</option>
+                <option value="Active" {% if key.status == "Active" %}selected{% endif %}>Active</option>
+                <option value="Has due date" {% if key.status == "Has due date" %}selected{% endif %}>Has due date</option>
+            </select>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit">Edit</button>
+    </form>
+{% endif %}
+{% endblock content %}
+{% include "todoapp/footer.html" %}

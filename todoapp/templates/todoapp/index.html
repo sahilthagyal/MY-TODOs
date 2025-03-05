@@ -1,0 +1,55 @@
+{% block content %}
+{% include "todoapp/indexheader.html" %}
+    
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col">
+                    <div class="card" id="list1" style="border-radius: .75rem; background-color:rgb(147, 165, 177);">
+                        <div class="card-body py-4 px-4 px-md-5">
+                            <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
+                                <i class="fas fa-check-square me-1"></i>
+                                <u>MY TODO-S</u>
+                            </p>
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <div class="pb-2">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="d-flex flex-column">
+                                                <!-- Title and Date fields -->
+                                                <div class="mb-3">
+                                                    {{ form.Title }}
+                                                </div>
+                                                <div class="mb-3">
+                                                    {{ form.Date }}
+                                                </div>
+                            
+                                                <hr class="my-4">
+                            
+                                                <!-- Move the "Status" selection to the next line -->
+                                                <div class="mb-3">
+                                                    <p class="small mb-2 text-muted">Status</p>
+                                                    <select class="form-select" name="status">
+                                                        <option value="Completed">Completed</option>
+                                                        <option value="Active">Active</option>
+                                                        <option value="Has due date">Has due date</option>
+                                                    </select>
+                                                </div>
+                            
+                                                <!-- Submit button -->
+                                                <div>
+                                                    <button type="Submit" class="btn btn-primary">Add</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                          
+                              
+                            <!-- Todo List Items -->
+                   
+{% endblock content %}
+{% include "todoapp/footer.html" %}
